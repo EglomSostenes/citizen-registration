@@ -1,24 +1,17 @@
-# README
+# Citizen Registration
+<!--ts-->
+  * Ferramentas
+      * **Ruby 3.1.2**.
+      * **Rails 7.0.6**
+      * **PostgreSQL**
+      * **Docker**
+      * **Mailcatcher**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  * Instruções
+      * Primeiramente, clone o projeto com `git clone git@github.com:EglomSostenes/citizen-registration.git`;
+      * Acesse o diretório, rode `docker-compose build` e depois `docker-compose up`
+      * Acesse **http://localhost:3000**
+  
+  * Testes Automatizados
+    * Rode os testes com `rspec`.
+<!--te-->
