@@ -1,0 +1,125 @@
+<%= form_for (@citizen) do |f| %>
+ <%= render 'shared/error_messages', object: @citizen if @citizen.errors.any? %>
+
+ <div class="container shadow rounded mt-4 mb-4 pb-2">
+  <div class="text-secondary pt-3"><h6><strong>Informações Básicas</strong></h6></div>
+
+  <div class="form-group form-row justify-content-center">
+    <div class="col-7">
+      <%= f.label :full_name, 'Nome Completo' %>
+      <%= f.text_field :full_name, class: 'form-control', placeholder: 'Digite o nome completo' %>
+    </div>
+  </div>
+
+  <div class="form-group form-row justify-content-center">
+    <div class="col-7">
+      <%= f.label :cpf, 'CPF' %>
+      <%= f.text_field :cpf, class: 'form-control', placeholder: 'Digite o CPF'%>
+    </div>
+  </div>
+
+  <div class="form-group form-row justify-content-center">
+    <div class="col-7">
+      <%= f.label :cns, 'CNS' %>
+      <%= f.text_field :cns, class: 'form-control', placeholder: 'Digite o CNS'%>
+    </div>
+  </div>
+
+  <div class="form-group form-row justify-content-center">
+    <div class="col-7">
+      <%= f.label :email, 'E-mail' %>
+      <%= f.text_field :email, class: 'form-control', placeholder: 'Digite o email' %>
+    </div>
+  </div>
+
+  <div class="form-group form-row justify-content-center">
+    <div class="col-7">
+      <%= f.label :phone, 'Fone' %>
+      <%= f.text_field :phone, class: 'form-control', placeholder: 'Digite o telefone' %>
+    </div>
+  </div>
+
+  <div class="form-group form-row justify-content-center">
+    <div class="col-7">
+      <%= f.label :birthday, 'Data de Nascimento' %>
+      <%= f.date_field :birthday, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group form-row justify-content-center">
+    <div class="col-7">
+      <%= f.label :status, 'Status' %><br/>
+      <div class="form-check-inline">
+        <%= f.radio_button :status, :active, class: 'form-check-input' %>
+        <%= f.label :status, 'Ativo', value: 0, class: 'form-check-label' %>
+        <%= f.radio_button :status, :inactive, class: 'form-check-input ml-2' %>
+        <%= f.label :status, 'Inativo', value: 1, class: 'form-check-label' %>
+      </div>
+    </div>
+  </div>
+
+  <hr class="border"/>
+
+  <div class="text-secondary"><h6><strong>Informações de Endereço</strong></h6></div>
+
+  <%= f.fields_for :address do |address_form| %>
+    <div class="form-group form-row justify-content-center">
+      <div class="col-7">
+        <%= address_form.label :zip_code, 'CEP' %>
+        <%= address_form.text_field :zip_code, class: 'form-control', placeholder: 'Digite o CEP' %>
+      </div>
+    </div>
+
+     <div class="form-group form-row justify-content-center">
+      <div class="col-7">
+        <%= address_form.label :street, 'Logradouro' %>
+        <%= address_form.text_field :street, class: 'form-control', placeholder: 'Digite o Logradouro' %>
+      </div>
+    </div>
+
+    <div class="form-group form-row justify-content-center">
+      <div class="col-7">
+        <%= address_form.label :complement, 'Complemento (opcional)' %>
+        <%= address_form.text_field :complement, class: 'form-control', placeholder: 'Digite o complemento' %>
+      </div>
+    </div>
+
+    <div class="form-group form-row justify-content-center">
+      <div class="col-7">
+        <%= address_form.label :neighborhood, 'Bairro' %>
+        <%= address_form.text_field :neighborhood, class: 'form-control', placeholder: 'Digite o bairro' %>
+      </div>
+    </div>
+
+    <div class="form-group form-row justify-content-center">
+      <div class="col-7">
+        <%= address_form.label :city, 'Cidade' %>
+        <%= address_form.text_field :city, class: 'form-control', placeholder: 'Digite a cidade' %>
+      </div>
+    </div>
+
+    <div class="form-group form-row justify-content-center">
+      <div class="col-7">
+        <%= address_form.label :uf, 'Digite o UF' %>
+        <%= address_form.text_field :uf, class: 'form-control', placeholder: 'Digite o UF' %>
+      </div>
+    </div>
+
+    <div class="form-group form-row justify-content-center">
+      <div class="col-7">
+        <%= address_form.label :ibge_code, 'Código IBGE (opcional)' %>
+        <%= address_form.text_field :ibge_code, class: 'form-control', placeholder: 'Digite o código IBGE' %>
+      </div>
+    </div>
+
+    </div>
+  <% end %>
+
+  <div class="form-group form-row justify-content-center mt-2 mb-2">
+    <div class='col-7'>
+      <%= link_to 'Cancelar', citizens_path, class: 'btn btn-dark shadow-sm', title: 'Voltar' %>
+      <%= f.submit 'Salvar', class: 'btn btn-success shadow-sm ml-2', title: 'Registrar novo munícipe' %>
+    </div>
+  </div>  
+ </div>
+<% end %>

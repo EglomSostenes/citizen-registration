@@ -1,0 +1,32 @@
+<div class="container shadow rounded mt-4">
+  <div class="text-center pt-3"><h6><strong><%= @citizen.full_name %></strong></h6></div>
+  <hr class="border"/>
+
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <div class="text-center"><strong>CPF</strong></div>
+      <div class="text-center"><%= @citizen.cpf %></div>
+      <div class="text-center"><strong>CNS</strong></div>
+      <div class="text-center"><%= @citizen.cns %></div>
+      <div class="text-center"><strong>E-mail</strong></div>
+      <div class="text-center"><%= @citizen.email %></div>
+      <div class="text-center"><strong>Fone</strong></div>
+      <div class="text-center"><%= @citizen.phone %></div>
+      <div class="text-center"><strong>Data de Nascimento</strong></div>
+      <div class="text-center"><%= @citizen.birthday %></div>
+      <div class="text-center"><strong>Status</strong></div>
+      <% if @citizen.status == 'active' %>
+        <div class="text-center">Ativo</div>
+      <% else %>
+        <div class="text-center">Inativo</div>
+      <% end %>
+    </div>
+  </div>
+
+  <hr class="border mb-2"/>
+
+  <div class="text-center pb-3">
+    <%= link_to ('Voltar'), citizens_path, class: 'btn btn-dark shadow-sm', title: 'Voltar para a listagem de munícipes' %>
+    <%= link_to ('Editar'), edit_citizen_path, class: 'btn btn-success shadow-sm', title: 'Editar dados do munícipe' %>
+  </div>
+</div>

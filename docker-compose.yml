@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: citizen_registration_development
+      POSTGRES_PASSWORD: password
+    networks:
+      - backend
+  mailcatcher:
+    image: yappabe/mailcatcher
+    ports:
+      - "1025:1025"
+      - "1080:1080"
+    networks:
+      - backend
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/citizen-registration
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - mailcatcher
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: "bridge"
